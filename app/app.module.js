@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('myTodo', ['todo']);
+angular.module('myTodo', ['ngRoute', 'todo']);

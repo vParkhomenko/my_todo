@@ -1,21 +1,21 @@
 <h1>TODOS</h1>
 <section>
  <form ng-submit="submit()">
-  <input type="text" ng-model="text" name="text" id="new-todo" placeholder="What needs to be done?">
+  <input type="text" ng-model="newTodo" name="text" id="new-todo" placeholder="What needs to be done?" autofocus>
   <label class="arrow"></label>
  </form>
 </section>
 
 <section id="main">
  <ul id="todo-list">
-  <li ng-repeat="n in list track by $index">
-   <input id="toggle" class="toggle" type="checkbox">
-   <label class="toggled" for="toggle">{{n}}</label>
-   <button>×</button>
+  <li ng-repeat="n in list track by $index" ng-class="{completed: n.completed}" >
+   <input id="toggle" class="toggle" type="checkbox" ng-model="n.completed" ng-change="toggleCompleted(n)">
+   <label class="toggled" ng-dblclick="editTodo(n)" for="toggle">{{n.title}}</label>
+   <button ng-click="removeTodo(n)">×</button>
   </li>
  </ul>
  <footer id="footer" ng-if="list.length">
-  <span id="todo-count">1 items left</span>
+  <span id="todo-count">{{list.length}} items left</span>
   <ul id="filters">
    <li><a href="">All</a></li>
    <li><a href="">Active</a></li>
