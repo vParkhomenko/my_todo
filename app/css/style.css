@@ -179,6 +179,7 @@ label[for='toggle-all'] {
     color: #be2020;
 }
 #footer {
+    position: relative;
     color: #777;
     padding: 10px 15px;
     height: 20px;
@@ -198,7 +199,7 @@ label[for='toggle-all'] {
 #filters li {
     display: inline;
 }
-#filters li a {
+#filters li a, #clear-completed {
     color: #777;
     margin: 3px;
     padding: 3px 7px;
@@ -206,10 +207,19 @@ label[for='toggle-all'] {
     border: 1px solid transparent;
     border-radius: 3px;
 }
-#filters li a:hover {
+#filters li a:hover, #clear-completed:hover {
     border-color: rgba(0, 0, 0, 0.11);
 }
 #filters li a.selected {
     border-color: rgba(175, 47, 47, 0.2);
+}
+#clear-completed {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background: none;
+    cursor: pointer;
+    font-size: 13.5px;
+    outline: none;
 }
 
