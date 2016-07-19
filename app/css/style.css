@@ -51,6 +51,35 @@ form {
     background: rgba(0, 0, 0, 0.003);
     box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
 }
+#main {
+    position: relative;
+}
+label[for='toggle-all'] {
+    display: none;
+}
+#toggle-all {
+    padding: 10px 0;
+    position: absolute;
+    top: -60px;
+    left: 0px;
+    width: 50px;
+    height: 60px;
+    text-align: center;
+    border: none; /* Mobile Safari */
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+#toggle-all:before {
+    content: '»';
+    font-size: 28px;
+    color: #d9d9d9;
+    transform: rotate(90deg);
+    display: inline-block;
+}
+#toggle-all:checked:before {
+    color: #737373;
+}
 #todo-list {
     margin: 0;
     padding: 0;
