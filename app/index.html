@@ -4,15 +4,46 @@
     <meta charset="UTF-8">
     <title>MY TODO</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.min.js"></script>
-    <script src="bower_components/angular-route/angular-route.min.js"></script>
-    <script src="app.module.js"></script>
-    <script src="todo/todo.module.js"></script>
-    <script src="todo/todo.component.js"></script>
-    <script src="js/services/TodoStorage.js"></script>
 </head>
 <body>
-    <todo></todo>
+<h1>TODOS</h1>
+<section ng-controller="TodoCtrl">
+    <form ng-submit="addTodo()">
+        <input type="text" ng-model="newTodo" name="text" id="new-todo" placeholder="What needs to be done?" autofocus>
+    </form>
+    <section id="main" ng-show="todos.length" ng-cloak>
+        <input id="toggle-all" type="checkbox" ng-model="allChecked" ng-click="markAll(allChecked)" ng-if="todos.length">
+        <label for="toggle-all">Выполнить все задачи</label>
+        <ul id="todo-list">
+            <li ng-repeat="todo in todos track by $index" ng-class="{completed: todo.completed, editing: todo == editedTodo}" >
+                <div class="view">
+                    <input id="toggle" class="toggle" type="checkbox" ng-model="todo.completed">
+                    <label class="toggled" ng-dblclick="editTodo(todo)">{{todo.title}}</label>
+                    <button ng-click="removeTodo(todo)">×</button>
+                </div>
+                <form ng-submit="doneEditing(todo)">
+                    <input class="edit" ng-model="todo.title" todo-blur="doneEditing(todo)" todo-focus="todo == editedTodo">
+                </form>
+            </li>
+        </ul>
+        <footer id="footer" ng-if="todos.length">
+            <span id="todo-count">{{todos.length}} items left</span>
+            <ul id="filters">
+                <li><a href="">All</a></li>
+                <li><a href="">Active</a></li>
+                <li><a href="">Completed</a></li>
+            </ul>
+        </footer>
+    </section>
+</section>
+
+
+
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-resource/angular-resource.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
+<script src="js/app.module.js"></script>
+<script src="js/controllers/TodoCtrl.js"></script>
+<script src="js/services/TodoStorage.js"></script>
 </body>
 </html>
