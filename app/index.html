@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>MY TODO</title>
+    <link rel="shortcut icon" href="img/favicon.png" type="image/png">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -23,6 +24,7 @@
                 </div>
                 <form ng-submit="doneEditing(todo)">
                     <input class="edit" ng-model="todo.title" todo-blur="doneEditing(todo)" todo-focus="todo == editedTodo">
+                    <div class="editImg" for="edit"></div>
                 </form>
             </li>
         </ul>
